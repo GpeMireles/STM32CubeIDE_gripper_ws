@@ -3677,3 +3677,9 @@
 2023-05-30 22:14:35,361 [INFO] ProjectBuilder:4505 - Time for Generating toolchain IDE Files: 1593mS.
 2023-05-30 22:14:35,361 [INFO] ProjectBuilder:2867 - Time for Copy CMSIS : 0mS.
 2023-05-30 22:14:35,393 [INFO] ProjectBuilder:2867 - Time for Copy CMSIS : 0mS.
+2023-05-30 22:23:12,818 [INFO] EditThreadDialog:704 - RAM SIZE (in KB): 64
+2023-05-30 22:23:12,818 [INFO] EditThreadDialog:706 - RAM SIZE (in words): 16384
+2023-05-30 22:23:16,710 [INFO] EditThreadDialog:704 - RAM SIZE (in KB): 64
+2023-05-30 22:23:16,710 [INFO] EditThreadDialog:706 - RAM SIZE (in words): 16384
+2023-05-30 22:23:20,995 [INFO] EditThreadDialog:704 - RAM SIZE (in KB): 64
+2023-05-30 22:23:20,995 [INFO] EditThreadDialog:706 - RAM SIZE (in words): 16384
