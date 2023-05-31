@@ -41,29 +41,40 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-/* Definitions for Blink01 */
-osThreadId_t Blink01Handle;
-const osThreadAttr_t Blink01_attributes = {
-  .name = "Blink01",
+TIM_HandleTypeDef htim2;
+
+/* Definitions for Servo01 */
+osThreadId_t Servo01Handle;
+const osThreadAttr_t Servo01_attributes = {
+  .name = "Servo01",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for Blink02 */
-osThreadId_t Blink02Handle;
-const osThreadAttr_t Blink02_attributes = {
-  .name = "Blink02",
+/* Definitions for Servo02 */
+osThreadId_t Servo02Handle;
+const osThreadAttr_t Servo02_attributes = {
+  .name = "Servo02",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityBelowNormal,
 };
+/* Definitions for StopServos */
+osThreadId_t StopServosHandle;
+const osThreadAttr_t StopServos_attributes = {
+  .name = "StopServos",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityAboveNormal,
+};
 /* USER CODE BEGIN PV */
-
+int servo_1_stop = 0, servo_2_stop = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-void StartBlink01(void *argument);
-void StartBlink02(void *argument);
+static void MX_TIM2_Init(void);
+void StartServo01(void *argument);
+void StartServo02(void *argument);
+void StartStopServos(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -102,8 +113,12 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
+  TIM2->CCR1 = 60;
+  TIM2->CCR2 = 60;
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -126,11 +141,14 @@ int main(void)
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of Blink01 */
-  Blink01Handle = osThreadNew(StartBlink01, NULL, &Blink01_attributes);
+  /* creation of Servo01 */
+  Servo01Handle = osThreadNew(StartServo01, NULL, &Servo01_attributes);
 
-  /* creation of Blink02 */
-  Blink02Handle = osThreadNew(StartBlink02, NULL, &Blink02_attributes);
+  /* creation of Servo02 */
+  Servo02Handle = osThreadNew(StartServo02, NULL, &Servo02_attributes);
+
+  /* creation of StopServos */
+  StopServosHandle = osThreadNew(StartStopServos, NULL, &StopServos_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -186,13 +204,76 @@ void SystemClock_Config(void)
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 64;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 2499;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+  HAL_TIM_MspPostInit(&htim2);
+
 }
 
 /**
@@ -225,43 +306,102 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+int funct_aux(){
+	return TIM2->CCR1;
+}
+void move_servo_to(int n, int pwm){
+	if (n == 1){
+		TIM2->CCR1 = pwm;
+	}
+	else if(n == 2){
+		TIM2->CCR2 = pwm;
+	}
+}
+void move_servo_fw(int n){
+	if (n == 1){
+		TIM2->CCR1 += 1;
+	}
+	else if(n == 2){
+		TIM2->CCR2 += 1;
+	}
+}
+void move_servo_bw(int n){
+	if (n == 1){
+		TIM2->CCR1 -= 1;
+	}
+	else if(n == 2){
+		TIM2->CCR2 -= 1;
+	}
+}
 
 /* USER CODE END 4 */
 
-/* USER CODE BEGIN Header_StartBlink01 */
+/* USER CODE BEGIN Header_StartServo01 */
 /**
-  * @brief  Function implementing the Blink01 thread.
+  * @brief  Function implementing the Servo01 thread.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_StartBlink01 */
-void StartBlink01(void *argument)
+/* USER CODE END Header_StartServo01 */
+void StartServo01(void *argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  if (servo_1_stop == 0){
+		  move_servo_fw(1);
+	  }
+	  osDelay(100);
   }
+  osThreadTerminate(NULL);
   /* USER CODE END 5 */
 }
 
-/* USER CODE BEGIN Header_StartBlink02 */
+/* USER CODE BEGIN Header_StartServo02 */
 /**
-* @brief Function implementing the Blink02 thread.
+* @brief Function implementing the Servo02 thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartBlink02 */
-void StartBlink02(void *argument)
+/* USER CODE END Header_StartServo02 */
+void StartServo02(void *argument)
 {
-  /* USER CODE BEGIN StartBlink02 */
+  /* USER CODE BEGIN StartServo02 */
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  if (servo_1_stop != 0 && servo_2_stop == 0){
+		  move_servo_fw(2);
+	  }
+	  osDelay(100);
   }
-  /* USER CODE END StartBlink02 */
+  osThreadTerminate(NULL);
+  /* USER CODE END StartServo02 */
+}
+
+/* USER CODE BEGIN Header_StartStopServos */
+/**
+* @brief Function implementing the StopServos thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartStopServos */
+void StartStopServos(void *argument)
+{
+  /* USER CODE BEGIN StartStopServos */
+  /* Infinite loop */
+  for(;;)
+  {
+	  if(TIM2->CCR1 > 200){
+		  servo_1_stop = 1;
+	  }
+	  if(TIM2->CCR2 > 180){
+	  		servo_2_stop = 1;
+	  }
+	  osDelay(100);
+  }
+  /* USER CODE END StartStopServos */
 }
 
 /**
