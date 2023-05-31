@@ -310,14 +310,13 @@ static void MX_GPIO_Init(void)
 int funct_aux(){
 	return TIM2->CCR1;
 }
-float pwm_to_ang(int n){
+void pwm_to_ang(int n){
 	if (n == 1){
-		return (180.0/240.0)*((float)TIM2->CCR1 - 60);
-	}
-	if(n == 2){
-		return (180.0/240.0)*((float)TIM2->CCR2 - 60);
-	}
-	return -1;
+			ang[0] = (180/240)*(TIM2->CCR1 - 60);
+		}
+		else if(n == 2){
+			ang[1] = (180/240)*(TIM2->CCR2 - 60);
+		}
 }
 void move_servo_to(int n, int pwm){
 	if (n == 1){
@@ -361,7 +360,7 @@ void StartServo01(void *argument)
   {
 	  if (servo_1_stop == 0){
 		  move_servo_fw(1);
-		  ang[0] = pwm_to_ang(1);
+		  pwm_to_ang(1);
 	  }
 	  osDelay(100);
   }
@@ -384,7 +383,7 @@ void StartServo02(void *argument)
   {
 	  if (servo_1_stop != 0 && servo_2_stop == 0){
 		  move_servo_fw(2);
-		  ang[1] = pwm_to_ang(2);
+		  pwm_to_ang(2);
 	  }
 	  osDelay(100);
   }

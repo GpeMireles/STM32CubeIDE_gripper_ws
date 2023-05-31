@@ -384,7 +384,7 @@ void StartServo02(void *argument)
   {
 	  if (servo_1_stop != 0 && servo_2_stop == 0){
 		  move_servo_fw(2);
-		  ang[1] = pwm_to_ang(2);
+		  ango[1] = pwm_to_ang(2);
 	  }
 	  osDelay(100);
   }

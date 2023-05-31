@@ -3683,3 +3683,11 @@
 2023-05-30 22:23:16,710 [INFO] EditThreadDialog:706 - RAM SIZE (in words): 16384
 2023-05-30 22:23:20,995 [INFO] EditThreadDialog:704 - RAM SIZE (in KB): 64
 2023-05-30 22:23:20,995 [INFO] EditThreadDialog:706 - RAM SIZE (in words): 16384
+2023-05-30 23:46:43,877 [INFO] Activator:176 - 
+
+
+2023-05-30 23:46:43,877 [INFO] Activator:177 - !SESSION log4j initialized
+2023-05-30 23:46:52,269 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2023-05-30 23:47:22,954 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-05-30 23:47:22,954 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-05-30 23:47:22,954 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
