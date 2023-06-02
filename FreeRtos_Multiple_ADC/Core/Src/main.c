@@ -368,7 +368,7 @@ void StartTaskADC_conversionComplete(void *argument)
   for(;;)
   {
 	  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_result, adc_channel_count);
-	  osDelay(1);
+	  osDelay(100);
   }
   /* USER CODE END StartTaskADC_conversionComplete */
 }
