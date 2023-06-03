@@ -1,17 +1,10 @@
-16:33:28 **** Incremental Build of configuration Debug for project Free_RTOS ****
+18:12:49 **** Build of configuration Debug for project Free_RTOS ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "Free_RTOS.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\Free_RTOS\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Free_RTOS.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: Free_RTOS.elf
- 
 arm-none-eabi-size   Free_RTOS.elf 
-arm-none-eabi-objdump -h -S  Free_RTOS.elf  > "Free_RTOS.list"
    text	   data	    bss	    dec	    hex	filename
   19220	    124	  20620	  39964	   9c1c	Free_RTOS.elf
 Finished building: default.size.stdout
  
-Finished building: Free_RTOS.list
- 
 
-16:33:29 Build Finished. 0 errors, 0 warnings. (took 950ms)
+18:12:50 Build Finished. 0 errors, 0 warnings. (took 1s.577ms)
 

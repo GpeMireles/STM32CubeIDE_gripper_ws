@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "mainpp.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +48,10 @@ ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
 
 TIM_HandleTypeDef htim2;
+
+UART_HandleTypeDef huart2;
+DMA_HandleTypeDef hdma_usart2_rx;
+DMA_HandleTypeDef hdma_usart2_tx;
 
 /* Definitions for TaskADC */
 osThreadId_t TaskADCHandle;
@@ -77,9 +81,17 @@ const osThreadAttr_t GripperGoToTask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for TaskRosserial */
+osThreadId_t TaskRosserialHandle;
+const osThreadAttr_t TaskRosserial_attributes = {
+  .name = "TaskRosserial",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
+};
 /* USER CODE BEGIN PV */
 // ADC Variables & constants
 int adc1, adc2;
+int ang[2];
 volatile uint16_t adc_result[2];
 const int adc_channel_count = sizeof(adc_result) / sizeof(adc_result[0]);
 
@@ -103,10 +115,12 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_USART2_UART_Init(void);
 void StartTaskADC(void *argument);
 void StartGripperOpenTask(void *argument);
 void StartGripperClose(void *argument);
 void StartGripperGoToTask(void *argument);
+void StartTaskRosserial(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -148,9 +162,11 @@ int main(void)
   MX_DMA_Init();
   MX_ADC1_Init();
   MX_TIM2_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
+  setup();
   TIM2->CCR1 = 60;
   TIM2->CCR2 = 60;
   /* USER CODE END 2 */
@@ -186,6 +202,9 @@ int main(void)
 
   /* creation of GripperGoToTask */
   GripperGoToTaskHandle = osThreadNew(StartGripperGoToTask, NULL, &GripperGoToTask_attributes);
+
+  /* creation of TaskRosserial */
+  TaskRosserialHandle = osThreadNew(StartTaskRosserial, NULL, &TaskRosserial_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -375,6 +394,39 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 57600;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -382,8 +434,15 @@ static void MX_DMA_Init(void)
 
   /* DMA controller clock enable */
   __HAL_RCC_DMA2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
+  /* DMA1_Stream5_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
+  /* DMA1_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
   /* DMA2_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
@@ -402,7 +461,18 @@ static void MX_GPIO_Init(void)
 /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : LD2_Pin */
+  GPIO_InitStruct.Pin = LD2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PA6 */
   GPIO_InitStruct.Pin = GPIO_PIN_6;
@@ -491,15 +561,15 @@ void StartGripperOpenTask(void *argument)
   /* Infinite loop */
 	for(;;)
 	{
-		if (emergency_stop == 0 && gripper_instruction_task != 0){
-			if (gripper_instruction_task == 1){
+		if (emergency_stop == 0 && gripper_instruction_flag != 0){
+			if (gripper_instruction_flag == 1){
 				while(ang[0] < 160){
 					move_servo_fw(1);
 					ang[0] = pwm_to_ang(1);
 					osDelay(50);
 				}
 			}
-			else if(gripper_instruction_task == 2){
+			else if(gripper_instruction_flag == 2){
 				while(ang[0] < 160){
 					move_servo_bw(1);
 					ang[0] = pwm_to_ang(1);
@@ -528,8 +598,10 @@ void StartGripperClose(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(10000);
   }
+  osThreadTerminate(NULL);
+
   /* USER CODE END StartGripperClose */
 }
 
@@ -548,7 +620,28 @@ void StartGripperGoToTask(void *argument)
   {
     osDelay(1);
   }
+  osThreadTerminate(NULL);
   /* USER CODE END StartGripperGoToTask */
+}
+
+/* USER CODE BEGIN Header_StartTaskRosserial */
+/**
+* @brief Function implementing the TaskRosserial thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTaskRosserial */
+void StartTaskRosserial(void *argument)
+{
+  /* USER CODE BEGIN StartTaskRosserial */
+  /* Infinite loop */
+  for(;;)
+  {
+	  loop();
+    osDelay(1000);
+  }
+  osThreadTerminate(NULL);
+  /* USER CODE END StartTaskRosserial */
 }
 
 /**

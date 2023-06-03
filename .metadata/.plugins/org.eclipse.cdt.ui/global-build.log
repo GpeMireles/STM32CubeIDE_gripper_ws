@@ -1,9 +1,21 @@
-22:12:39 **** Incremental Build of configuration Debug for project Free_RTOS_rosserial ****
+18:13:44 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
 make -j8 all 
-arm-none-eabi-g++ "../Core/Src/rosserial.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/rosserial.d" -MT"Core/Src/rosserial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/rosserial.o"
-../Core/Src/rosserial.cpp:8:10: fatal error: mainpp.h: No such file or directory
-    8 | #include <mainpp.h>
-      |          ^~~~~~~~~~
-compilation terminated.
-make: *** [Core/Src/subdir.mk:49: Core/Src/rosserial.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-g++ "../Core/Src/mainpp.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/mainpp.d" -MT"Core/Src/mainpp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/mainpp.o"
+arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: FreeRtos_Integration.elf
+ 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
+   text	   data	    bss	    dec	    hex	filename
+  45424	    136	  23616	  69176	  10e38	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+Finished building: FreeRtos_Integration.list
+ 
+18:16:50 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+   text	   data	    bss	    dec	    hex	filename
+  45424	    136	  23616	  69176	  10e38	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
