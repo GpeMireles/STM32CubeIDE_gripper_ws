@@ -3863,3 +3863,8 @@
 2023-06-02 19:22:24,446 [INFO] CADModel:114 - Register for checkConnection events
 2023-06-02 19:22:24,446 [INFO] RtosManager:697 - Active RTOS found at IOC load: FREERTOS [Cortex-M4NS]
 2023-06-02 19:22:24,508 [INFO] OpenFileManager:328 - Restore cursor
+2023-06-02 21:44:13,614 [INFO] Activator:176 - 
+
+
+2023-06-02 21:44:13,614 [INFO] Activator:177 - !SESSION log4j initialized
+2023-06-02 21:44:27,457 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 

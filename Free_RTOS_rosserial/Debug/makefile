@@ -16,6 +16,7 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include Core/Inc/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -53,34 +54,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Free_RTOS_Servos
+BUILD_ARTIFACT_NAME := Free_RTOS_rosserial
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Free_RTOS_Servos.elf \
+Free_RTOS_rosserial.elf \
 
 MAP_FILES += \
-Free_RTOS_Servos.map \
+Free_RTOS_rosserial.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-Free_RTOS_Servos.list \
+Free_RTOS_rosserial.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: Free_RTOS_Servos.elf secondary-outputs
+main-build: Free_RTOS_rosserial.elf secondary-outputs
 
 # Tool invocations
-Free_RTOS_Servos.elf Free_RTOS_Servos.map: $(OBJS) $(USER_OBJS) C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\Free_RTOS_Servos\STM32F401CCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Free_RTOS_Servos.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\Free_RTOS_Servos\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Free_RTOS_Servos.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Free_RTOS_rosserial.elf Free_RTOS_rosserial.map: $(OBJS) $(USER_OBJS) C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\Free_RTOS_rosserial\STM32F401CCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "Free_RTOS_rosserial.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\Free_RTOS_rosserial\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Free_RTOS_rosserial.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -89,14 +90,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Free_RTOS_Servos.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Free_RTOS_Servos.list"
+Free_RTOS_rosserial.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Free_RTOS_rosserial.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Free_RTOS_Servos.elf Free_RTOS_Servos.list Free_RTOS_Servos.map default.size.stdout
+	-$(RM) Free_RTOS_rosserial.elf Free_RTOS_rosserial.list Free_RTOS_rosserial.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
