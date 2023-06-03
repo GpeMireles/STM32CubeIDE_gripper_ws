@@ -23,7 +23,7 @@ namespace control_msgs
     {
     }
 
-    virtual int serialize(unsigned char *outbuffer) const override
+    virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
       union {
@@ -57,7 +57,7 @@ namespace control_msgs
       return offset;
     }
 
-    virtual int deserialize(unsigned char *inbuffer) override
+    virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
       union {
@@ -93,8 +93,8 @@ namespace control_msgs
      return offset;
     }
 
-    virtual const char * getType() override { return "control_msgs/GripperCommand"; };
-    virtual const char * getMD5() override { return "680acaff79486f017132a7f198d40f08"; };
+    const char * getType(){ return "control_msgs/GripperCommand"; };
+    const char * getMD5(){ return "680acaff79486f017132a7f198d40f08"; };
 
   };
 

@@ -26,7 +26,7 @@ namespace geometry_msgs
     {
     }
 
-    virtual int serialize(unsigned char *outbuffer) const override
+    virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
       union {
@@ -74,7 +74,7 @@ namespace geometry_msgs
       return offset;
     }
 
-    virtual int deserialize(unsigned char *inbuffer) override
+    virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
       union {
@@ -125,8 +125,8 @@ namespace geometry_msgs
      return offset;
     }
 
-    virtual const char * getType() override { return "geometry_msgs/Vector3"; };
-    virtual const char * getMD5() override { return "4a842b65f413084dc2b10fb484ea7f17"; };
+    const char * getType(){ return "geometry_msgs/Vector3"; };
+    const char * getMD5(){ return "4a842b65f413084dc2b10fb484ea7f17"; };
 
   };
 

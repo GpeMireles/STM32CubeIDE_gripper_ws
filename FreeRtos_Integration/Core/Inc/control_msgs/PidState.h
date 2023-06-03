@@ -58,7 +58,7 @@ namespace control_msgs
     {
     }
 
-    virtual int serialize(unsigned char *outbuffer) const override
+    virtual int serialize(unsigned char *outbuffer) const
     {
       int offset = 0;
       offset += this->header.serialize(outbuffer + offset);
@@ -229,7 +229,7 @@ namespace control_msgs
       return offset;
     }
 
-    virtual int deserialize(unsigned char *inbuffer) override
+    virtual int deserialize(unsigned char *inbuffer)
     {
       int offset = 0;
       offset += this->header.deserialize(inbuffer + offset);
@@ -411,8 +411,8 @@ namespace control_msgs
      return offset;
     }
 
-    virtual const char * getType() override { return "control_msgs/PidState"; };
-    virtual const char * getMD5() override { return "b138ec00e886c10e73f27e8712252ea6"; };
+    const char * getType(){ return "control_msgs/PidState"; };
+    const char * getMD5(){ return "b138ec00e886c10e73f27e8712252ea6"; };
 
   };
 
