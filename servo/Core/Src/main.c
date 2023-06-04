@@ -72,8 +72,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-
-	HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -100,9 +99,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  TIM2->CCR1 = 180;
+	  HAL_Delay(2000);
+	  TIM2->CCR1 = 60;
+	  HAL_Delay(2000);
 	  TIM2->CCR2 = 180;
-	  HAL_Delay(4000);
-	  TIM2->CCR2 = 75;
+	  HAL_Delay(2000);
+	  TIM2->CCR2 = 60;
 	  HAL_Delay(2000);
 //	  else{
 //		  if(TIM2->CCR1 < 190){
@@ -161,8 +164,8 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV8;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV4;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
