@@ -1,0 +1,12 @@
+22:12:39 **** Incremental Build of configuration Debug for project Free_RTOS_rosserial ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/rosserial.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/rosserial.d" -MT"Core/Src/rosserial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/rosserial.o"
+../Core/Src/rosserial.cpp:8:10: fatal error: mainpp.h: No such file or directory
+    8 | #include <mainpp.h>
+      |          ^~~~~~~~~~
+compilation terminated.
+make: *** [Core/Src/subdir.mk:49: Core/Src/rosserial.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+22:12:39 Build Failed. 2 errors, 0 warnings. (took 453ms)
+
