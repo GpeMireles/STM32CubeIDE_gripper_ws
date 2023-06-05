@@ -1,3 +1,9 @@
-servo_1_stop
+global_msg
 servo_2_stop
 ang
+gripper_instruction_flag
+gripper_go_to
+button_pressed
+gripper
+art
+adc_result

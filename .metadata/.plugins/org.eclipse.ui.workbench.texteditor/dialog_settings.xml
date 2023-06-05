@@ -6,12 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="loop"/>
+		<item key="selection" value="Open"/>
 		<list key="findhistory">
-			<item value="loop"/>
-			<item value="dma"/>
-			<item value="d"/>
-			<item value="aux"/>
+			<item value="open"/>
+			<item value="Push"/>
+			<item value="go_to"/>
+			<item value="move_servo_to"/>
+			<item value="ang"/>
+			<item value="gripper_go_to"/>
+			<item value="global"/>
+			<item value="global7"/>
+			<item value="emergency_stop"/>
+			<item value="start"/>
+			<item value="hal_de"/>
+			<item value="hal"/>
+			<item value="starros"/>
+			<item value="startask"/>
+			<item value="StartGripperOpenTask"/>
 		</list>
 		<list key="replacehistory">
 		</list>

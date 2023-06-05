@@ -61,6 +61,16 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LD2_Pin GPIO_PIN_13
 #define LD2_GPIO_Port GPIOC
+#define Gripper_Servo_Pin GPIO_PIN_0
+#define Gripper_Servo_GPIO_Port GPIOA
+#define Art_Servo_Pin GPIO_PIN_1
+#define Art_Servo_GPIO_Port GPIOA
+#define Gripper_Pot_Pin GPIO_PIN_0
+#define Gripper_Pot_GPIO_Port GPIOB
+#define Art_Pot_Pin GPIO_PIN_1
+#define Art_Pot_GPIO_Port GPIOB
+#define Push_Button_Pin GPIO_PIN_8
+#define Push_Button_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

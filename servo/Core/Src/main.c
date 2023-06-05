@@ -91,8 +91,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
-  TIM2->CCR1 = 65;
-  TIM2->CCR2 = 70;
+  TIM2->CCR1 = 60;
+  TIM2->CCR2 = 60;
   /* USER CODE END 2 */
 
   /* Infinite loop */

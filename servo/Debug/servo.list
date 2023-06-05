@@ -391,13 +391,13 @@ int main(void)
  80004f4:	2104      	movs	r1, #4
  80004f6:	4819      	ldr	r0, [pc, #100]	; (800055c <main+0x84>)
  80004f8:	f001 fa88 	bl	8001a0c <HAL_TIM_PWM_Start>
-  TIM2->CCR1 = 65;
+  TIM2->CCR1 = 60;
  80004fc:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
- 8000500:	2241      	movs	r2, #65	; 0x41
+ 8000500:	223c      	movs	r2, #60	; 0x3c
  8000502:	635a      	str	r2, [r3, #52]	; 0x34
-  TIM2->CCR2 = 70;
+  TIM2->CCR2 = 60;
  8000504:	f04f 4380 	mov.w	r3, #1073741824	; 0x40000000
- 8000508:	2246      	movs	r2, #70	; 0x46
+ 8000508:	223c      	movs	r2, #60	; 0x3c
  800050a:	639a      	str	r2, [r3, #56]	; 0x38
 
   /* Infinite loop */
