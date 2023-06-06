@@ -1,10 +1,10 @@
-04:59:17 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+20:29:00 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
 make -j8 all 
 arm-none-eabi-size   FreeRtos_Integration.elf 
    text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
+  51068	    136	  23728	  74932	  124b4	FreeRtos_Integration.elf
 Finished building: default.size.stdout
  
 
-04:59:17 Build Finished. 0 errors, 0 warnings. (took 375ms)
+20:29:01 Build Finished. 0 errors, 0 warnings. (took 1s.328ms)
 

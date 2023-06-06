@@ -1,4 +1,4 @@
-03:58:31 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+18:34:12 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
 make -j8 all 
 arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
@@ -7,12 +7,89 @@ Finished building target: FreeRtos_Integration.elf
 arm-none-eabi-size   FreeRtos_Integration.elf 
 arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
    text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
+  47384	    136	  23728	  71248	  11650	FreeRtos_Integration.elf
 Finished building: default.size.stdout
  
 Finished building: FreeRtos_Integration.list
  
-04:00:34 **** Incremental Build of configuration Debug for project servo ****
+18:34:24 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+   text	   data	    bss	    dec	    hex	filename
+  47384	    136	  23728	  71248	  11650	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+18:37:36 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: FreeRtos_Integration.elf
+ 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
+   text	   data	    bss	    dec	    hex	filename
+  47208	    136	  23728	  71072	  115a0	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+Finished building: FreeRtos_Integration.list
+ 
+19:44:48 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: FreeRtos_Integration.elf
+ 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
+   text	   data	    bss	    dec	    hex	filename
+  51052	    136	  23728	  74916	  124a4	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+Finished building: FreeRtos_Integration.list
+ 
+19:50:19 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: FreeRtos_Integration.elf
+ 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
+   text	   data	    bss	    dec	    hex	filename
+  51068	    136	  23728	  74932	  124b4	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+Finished building: FreeRtos_Integration.list
+ 
+19:50:35 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+   text	   data	    bss	    dec	    hex	filename
+  51068	    136	  23728	  74932	  124b4	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+19:53:05 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+   text	   data	    bss	    dec	    hex	filename
+  51068	    136	  23728	  74932	  124b4	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+19:55:41 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+   text	   data	    bss	    dec	    hex	filename
+  51068	    136	  23728	  74932	  124b4	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+20:29:00 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+make -j8 all 
+arm-none-eabi-size   FreeRtos_Integration.elf 
+   text	   data	    bss	    dec	    hex	filename
+  51068	    136	  23728	  74932	  124b4	FreeRtos_Integration.elf
+Finished building: default.size.stdout
+ 
+21:04:01 **** Build of configuration Debug for project servo ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-g++ -o "servo.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\servo\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="servo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
@@ -21,197 +98,22 @@ Finished building target: servo.elf
 arm-none-eabi-size   servo.elf 
 arm-none-eabi-objdump -h -S  servo.elf  > "servo.list"
    text	   data	    bss	    dec	    hex	filename
-  10264	     20	   1644	  11928	   2e98	servo.elf
+  10128	     20	   1644	  11792	   2e10	servo.elf
 Finished building: default.size.stdout
  
 Finished building: servo.list
  
-04:02:50 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
+21:05:01 **** Incremental Build of configuration Debug for project servo ****
 make -j8 all 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-g++ -o "servo.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\servo\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="servo.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: servo.elf
  
-04:07:10 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:30:44 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-04:35:09 **** Incremental Build of configuration Debug for project servo ****
-make -j8 all 
 arm-none-eabi-size   servo.elf 
+arm-none-eabi-objdump -h -S  servo.elf  > "servo.list"
    text	   data	    bss	    dec	    hex	filename
-  10264	     20	   1644	  11928	   2e98	servo.elf
+  10128	     20	   1644	  11792	   2e10	servo.elf
 Finished building: default.size.stdout
  
-04:36:38 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:45:39 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:47:17 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:47:33 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-04:48:32 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:52:37 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:53:37 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:53:57 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-04:55:56 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:58:02 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:58:57 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-g++ "../Core/Src/main.cpp" -mcpu=cortex-m4 -std=gnu++14 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-use-cxa-atexit -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-g++ -o "FreeRtos_Integration.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\HP\STM32CubeIDE\workspace_1.12.0\gripper_ws\FreeRtos_Integration\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FreeRtos_Integration.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: FreeRtos_Integration.elf
- 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-arm-none-eabi-objdump -h -S  FreeRtos_Integration.elf  > "FreeRtos_Integration.list"
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-Finished building: FreeRtos_Integration.list
- 
-04:59:11 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
- 
-04:59:17 **** Incremental Build of configuration Debug for project FreeRtos_Integration ****
-make -j8 all 
-arm-none-eabi-size   FreeRtos_Integration.elf 
-   text	   data	    bss	    dec	    hex	filename
-  46980	    136	  23672	  70788	  11484	FreeRtos_Integration.elf
-Finished building: default.size.stdout
+Finished building: servo.list
  

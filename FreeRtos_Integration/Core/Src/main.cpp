@@ -146,6 +146,11 @@ ros::Publisher chatter("chatter", &str_msg);
 ros::Subscriber<std_msgs::String> stm32_comms("gripper_action", &str_act_msg);
 std::string hello = "STM32 to Jetson!";
 std::string global_msg = "";
+
+
+std_msgs::String response_msg;
+ros::Publisher response("gripper_response", &response_msg);
+std::string global_response = "";
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -570,18 +575,18 @@ void move_servo_to(int n, int pwm){
 }
 void move_servo_fw(int n){
 	if (n == 0){
-		TIM2->CCR1 += 1;
+		TIM2->CCR1 += 2;
 	}
 	else if(n == 1){
-		TIM2->CCR2 += 1;
+		TIM2->CCR2 += 2;
 	}
 }
 void move_servo_bw(int n){
 	if (n == 0){
-		TIM2->CCR1 -= 1;
+		TIM2->CCR1 -= 2;
 	}
 	else if(n == 1){
-		TIM2->CCR2 -= 1;
+		TIM2->CCR2 -= 2;
 	}
 }
 
@@ -598,16 +603,25 @@ void setup(void)
 {
   nh.initNode();
   nh.advertise(chatter);
+  nh.advertise(response);
   nh.subscribe(stm32_comms);
 }
 
 void loop(void)
 {
-  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
   const char* str = hello.c_str();
   str_msg.data = str;
   chatter.publish(&str_msg);
   nh.spinOnce();
+}
+
+void response_method(void)
+{
+	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+	  const char* resp = global_response.c_str();
+	  response_msg.data = resp;
+	  response.publish(&response_msg);
+	  nh.spinOnce();
 }
 
 void str_act_msg(const std_msgs::String& msg){
@@ -664,7 +678,9 @@ void StartGripperOpenTask(void *argument)
 				ang[0] = pwm_to_ang(0);
 			}
 			while(ang[0] > GRIPPER_OPENED_ANG);
-			gripper_instruction_flag = 0;
+				gripper_instruction_flag = 0;
+				global_response = "abierto";
+				response_method();
 		}
 		else{
 		  osDelay(200);
@@ -692,9 +708,17 @@ void StartGripperCloseTask(void *argument)
 				move_servo_fw(0);
 				osDelay(50);
 				ang[0] = pwm_to_ang(0);
+				if (button_pressed){
+					global_response = "agarrado";
+					break;
+				}
 			}
 			while(ang[0] < GRIPPER_CLOSED_ANG && !button_pressed);
-			gripper_instruction_flag = 0;
+				gripper_instruction_flag = 0;
+				if (!button_pressed){
+					global_response = "cerrado";
+				}
+				response_method();
 		}
 		else{
 		  osDelay(200);
@@ -723,6 +747,8 @@ void StartGripperGoToTask(void *argument)
 			osDelay(500);
 			ang[0] = pwm_to_ang(0);
 			gripper_instruction_flag = 0;
+			global_response = "angulo gripper = " + std::to_string(ang[0]) + "°";
+			response_method();
 		}
 		else{
 		  osDelay(200);
@@ -771,7 +797,7 @@ void StartTaskRosserial(void *argument)
 		}
 	}
 	global_msg = "";
-	osDelay(300);
+	osDelay(500);
   }
   osThreadTerminate(NULL);
   /* USER CODE END StartTaskRosserial */
@@ -817,6 +843,8 @@ void StartArtUpTask(void *argument)
   			}
   			while(ang[1] < ART_UP_ANG);
   			art_instruction_flag = 0;
+			global_response = "arriba";
+			response_method();
   		}
   		else{
   		  osDelay(200);
@@ -846,6 +874,8 @@ void StartArtDownTask(void *argument)
 			}
 			while(ang[1] > ART_DOWN_ANG);
 			art_instruction_flag = 0;
+			global_response = "abajo";
+			response_method();
 		}
 		else{
 		  osDelay(200);
@@ -873,6 +903,8 @@ void StartArtGoToTask(void *argument)
   			osDelay(2000);
   			ang[1] = pwm_to_ang(1);
   			gripper_instruction_flag = 0;
+			global_response = "angulo art = " + std::to_string(ang[0]) + "°";
+			response_method();
   		}
   		else{
   		  osDelay(200);

@@ -92,21 +92,21 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
   TIM2->CCR1 = 60;
-  TIM2->CCR2 = 60;
+  TIM2->CCR2 = 300;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  TIM2->CCR1 = 180;
-	  HAL_Delay(2000);
-	  TIM2->CCR1 = 60;
-	  HAL_Delay(2000);
-	  TIM2->CCR2 = 180;
-	  HAL_Delay(2000);
-	  TIM2->CCR2 = 60;
-	  HAL_Delay(2000);
+//	  TIM2->CCR1 = 180;
+//	  HAL_Delay(2000);
+//	  TIM2->CCR1 = 60;
+//	  HAL_Delay(2000);
+//	  TIM2->CCR2 = 180;
+//	  HAL_Delay(2000);
+//	  TIM2->CCR2 = 60;
+//	  HAL_Delay(2000);
 //	  else{
 //		  if(TIM2->CCR1 < 190){
 //			  TIM2->CCR1 = 190;
